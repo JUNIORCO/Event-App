@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # event_app
 
 A new Flutter project.
@@ -14,3 +15,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# Event-App
+Orientation week app
+>>>>>>> 23b815f1f7b5272688b2b729c21a2c8ed19978e6
