@@ -21,10 +21,12 @@ class MyAppState extends State<MyApp> {
     Offers(),
     Safety(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Event App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.deepPurple[600],
       ),
