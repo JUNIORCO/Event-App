@@ -15,6 +15,7 @@ dependencies:
   english_words: ^3.1.5
   font_awesome_flutter: ^8.5.0
   gradient_bottom_navigation_bar: ^1.0.0+4
+  intl: ^0.16.1
     
 dev_dependencies:
   flutter_test:
