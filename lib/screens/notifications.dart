@@ -40,16 +40,6 @@ class Notifications extends StatelessWidget {
     DateTime.utc(2020, DateTime.june, 27, 8, 36),
   ];
 
-  Divider buildDivider(int index) {
-    return const Divider(
-      color: Color(0x00000000), // transparent color
-      height: 0.0,
-      endIndent: 0.0,
-      indent: 0.0,
-      thickness: 0.0,
-    );
-  }
-
   Widget buildItem(int index) {
     String formattedToday = DateFormat('MMMMd').format(DateTime.now());
     String formattedDate = DateFormat('MMMMd').format(dates[index]);
@@ -57,22 +47,45 @@ class Notifications extends StatelessWidget {
         ? DateFormat('MMMMd').format(dates[index])
         : DateFormat('MMMMd').format(dates[index - 1]);
 
-    // determine opacity of notification card
+    // determine opacity of notification card & header
     double opacity = (formattedToday == formattedDate) ? 1.0 : 0.5;
 
     // if first notification card, header is Today
     // else if the current and previous notification cards are identical, header is empty
     // else header is the date of the notification card
-    if (index == 0) {
-      return NotificationCard(
-          entries[index], images[index], dates[index], opacity, 'Today');
-    } else if (formattedDate == formattedPrev) {
-      return NotificationCard(
-          entries[index], images[index], dates[index], opacity, '');
-    } else {
-      return NotificationCard(
-          entries[index], images[index], dates[index], opacity, formattedDate);
+    String header = '';
+    double topPadding = 0.0;
+    if (index == 0)
+      header = 'Today';
+    else if (formattedDate != formattedPrev) {
+      header = formattedDate;
+      topPadding = 10.0;
     }
+
+    return Container(
+      child: Column(
+        children: <Widget>[
+          Visibility(
+            visible: !(header.length == 0),
+            child: Container(
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(
+                  top: topPadding, right: 20.0, bottom: 10.0, left: 20.0),
+              child: Text(
+                header,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.white.withOpacity(opacity),
+                ),
+              ),
+            ),
+          ),
+          NotificationCard(entries[index], images[index], dates[index], opacity)
+        ],
+      ),
+    );
   }
 
   @override
@@ -101,7 +114,7 @@ class Notifications extends StatelessWidget {
                   color: Colors.white),
             ),
             margin: EdgeInsets.only(
-                top: 60.0, right: 20.0, bottom: 20.0, left: 20.0),
+                top: 60.0, right: 20.0, bottom: 10.0, left: 20.0),
           ),
           Expanded(
             child: ListView.separated(
@@ -112,7 +125,13 @@ class Notifications extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) =>
                   buildItem(index),
               separatorBuilder: (BuildContext context, int index) =>
-                  buildDivider(index),
+                  const Divider(
+                color: Color(0x00000000), // transparent color
+                height: 10.0,
+                endIndent: 0.0,
+                indent: 0.0,
+                thickness: 0.0,
+              ),
             ),
           ),
         ],

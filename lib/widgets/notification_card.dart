@@ -9,105 +9,47 @@ class NotificationCard extends StatelessWidget {
   final DateTime _date;
   final DateFormat formatter = new DateFormat('MMMMd');
   double _opacity;
-  String _header;
 
   // Constructor
-  NotificationCard(
-      this._text, this._image, this._date, this._opacity, this._header);
+  NotificationCard(this._text, this._image, this._date, this._opacity);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      // crossAxisAlignment: CrossAxisAlignment.start,
-      // mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        Visibility(
-          visible: !(_header.length == 0),
-          child: Container(
-            alignment: Alignment.centerLeft,
-            margin: EdgeInsets.only(
-                top: 20.0, right: 20.0, bottom: 20.0, left: 20.0),
-            child: Text(
-              _header,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white.withOpacity(_opacity)),
+    return Opacity(
+      opacity: _opacity,
+      child: Container(
+        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+        padding: const EdgeInsets.all(20.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 5,
+              offset: Offset(0, 3),
+              blurRadius: 7.0,
             ),
-          ),
+          ],
         ),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(_opacity),
-            borderRadius: BorderRadius.circular(30.0),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.3),
-                spreadRadius: 5,
-                offset: Offset(0, 3),
-                blurRadius: 7.0,
+        child: Row(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(right: 10.0),
+              child: CircleAvatar(
+                backgroundImage: _image,
+                radius: 30,
               ),
-            ],
-          ),
-          margin: const EdgeInsets.only(bottom: 20.0, left: 20.0, right: 20.0),
-          padding: const EdgeInsets.all(20.0),
-          child: Row(
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(right: 10.0),
-                child: CircleAvatar(
-                  backgroundImage: _image,
-                  radius: 30,
-                ),
+            ),
+            Expanded(
+              child: Text(
+                _text,
+                textAlign: TextAlign.left,
               ),
-              Expanded(
-                child: Text(
-                  _text,
-                  textAlign: TextAlign.left,
-                ),
-              ),
-            ],
-          ),
-        )
-      ],
+            ),
+          ],
+        ),
+      ),
     );
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Container(
-  //     decoration: BoxDecoration(
-  //       color: Colors.white.withOpacity(_opacity),
-  //       borderRadius: BorderRadius.circular(30.0),
-  //       boxShadow: [
-  //         BoxShadow(
-  //           color: Colors.grey.withOpacity(0.3),
-  //           spreadRadius: 5,
-  //           offset: Offset(0, 3),
-  //           blurRadius: 7.0,
-  //         ),
-  //       ],
-  //     ),
-  //     margin: const EdgeInsets.only(bottom: 20.0, left: 20.0, right: 20.0),
-  //     padding: const EdgeInsets.all(20.0),
-  //     child: Row(
-  //       children: <Widget>[
-  //         Padding(
-  //           padding: EdgeInsets.only(right: 10.0),
-  //           child: CircleAvatar(
-  //             backgroundImage: _image,
-  //             radius: 30,
-  //           ),
-  //         ),
-  //         Expanded(
-  //           child: Text(
-  //             _text,
-  //             textAlign: TextAlign.left,
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }
