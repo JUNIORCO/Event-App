@@ -10,18 +10,18 @@ class Notifications extends StatelessWidget {
     'WOWWWWWWWWWWWW'
   ];
   final List<Color> colors = <Color>[
-    Colors.red,
-    Colors.blue,
-    Colors.green,
-    Colors.orange,
-    Colors.pink
+    Colors.white,
+    Colors.white,
+    Colors.white,
+    Colors.white,
+    Colors.white
   ];
-  final List<IconData> icons = <IconData>[
-    Icons.notifications,
-    Icons.place,
-    Icons.home,
-    Icons.shopping_cart,
-    Icons.security
+  final List<AssetImage> images = <AssetImage>[
+    AssetImage('assets/images/frosh.jpg'),
+    AssetImage('assets/images/uni_logo.png'),
+    AssetImage('assets/images/frosh.jpg'),
+    AssetImage('assets/images/uni_logo.png'),
+    AssetImage('assets/images/frosh.jpg'),
   ];
 
   @override
@@ -35,10 +35,11 @@ class Notifications extends StatelessWidget {
           itemCount: entries.length,
           itemBuilder: (BuildContext context, int index) {
             return NotificationCard(
-                colors[index], entries[index], icons[index]);
+                colors[index], entries[index], images[index]);
           },
           separatorBuilder: (BuildContext context, int index) => const Divider(
             color: Color(0x00000000), // transparent color
+            height: 0.0,
           ),
         ));
   }

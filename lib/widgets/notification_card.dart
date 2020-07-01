@@ -5,14 +5,14 @@ class NotificationCard extends StatelessWidget {
   // final: once you set it, you can't change it
   final Color _color;
   final String _text;
-  final IconData _icon;
+  final AssetImage _image;
 
   // Constructor
   // NotificationDetail(Color color) {
   //   this._color = color;
   // }
   // the shorthand version is
-  NotificationCard(this._color, this._text, this._icon);
+  NotificationCard(this._color, this._text, this._image);
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +26,11 @@ class NotificationCard extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Icon(_icon),
+              padding: EdgeInsets.only(right: 10.0),
+              child: CircleAvatar(
+                backgroundImage: _image,
+                radius: 30,
+              ),
             ),
             Expanded(
               child: Text(
