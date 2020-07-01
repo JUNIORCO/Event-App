@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   List<Color> _colors = <Color>[
-    Color(0xFFFD6A6B), 
+    Color(0xFFFD6A6B),
     Color(0xFF07B6D3),
     Color(0xFFF4EB17),
     Color(0xFF64E85F),
@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
     Color(0xFF0A9B1B),
     Color(0xFFFC7400),
   ];
-
 
   Widget _buildSchedule(int index) {
     return GestureDetector(
@@ -82,15 +81,21 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          Container( 
+          Container(
             height: MediaQuery.of(context).size.height / 4,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40.0),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(40.0),
+                bottomRight: Radius.circular(40.0),
+              ),
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [_colors[_selectedIndex], _colors[_selectedIndex+5],],
+                colors: [
+                  _colors[_selectedIndex],
+                  _colors[_selectedIndex + 5],
+                ],
               ),
               color: Colors.red,
               boxShadow: [
@@ -104,16 +109,22 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             child: Column(
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: 29.0, right: 265.0, top: 60.0, bottom: 15),
-                  child: Text(
-                    'Schedule',
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                      fontFamily: 'Open Sans',
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      top: 40,
+                      left: 15,
+                    ),
+                    padding: EdgeInsets.all(15.0),
+                    child: Text(
+                      'Schedule',
+                      style: TextStyle(
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontFamily: 'Open Sans',
+                      ),
                     ),
                   ),
                 ),
