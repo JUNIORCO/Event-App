@@ -16,6 +16,20 @@ class _HomeScreenState extends State<HomeScreen> {
     'F\n\n30',
   ];
 
+  List<Color> _colors = <Color>[
+    Color(0xFFFD6A6B), 
+    Color(0xFF07B6D3),
+    Color(0xFFF4EB17),
+    Color(0xFF64E85F),
+    Color(0xFFE88A1C),
+    Color(0xFFE0657A),
+    Color(0xFF209FCA),
+    Color(0xFFD5CE14),
+    Color(0xFF0A9B1B),
+    Color(0xFFFC7400),
+  ];
+
+
   Widget _buildSchedule(int index) {
     return GestureDetector(
       onTap: () {
@@ -68,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          Container(
+          Container( 
             height: MediaQuery.of(context).size.height / 4,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
@@ -76,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [Colors.redAccent[100], Colors.red[400]],
+                colors: [_colors[_selectedIndex], _colors[_selectedIndex+5],],
               ),
               color: Colors.red,
               boxShadow: [
