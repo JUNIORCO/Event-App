@@ -1,36 +1,42 @@
 import 'package:flutter/material.dart';
-import '../widgets/safety_card.dart';
+import '../cards/safety_card.dart';
 
-class Safety extends StatefulWidget {
-  @override
-  _SafetyState createState() => _SafetyState();
-}
-
-class _SafetyState extends State<Safety> {
-  List<String> _safetyTitle = ['Security', 'Tel-Aide', 'OSVERSE'];
+class Safety extends StatelessWidget {
+  List<String> _safetyTitle = [
+    'Security',
+    'Tel-Aide',
+    'OSVERSE',
+    'Security',
+  ];
   List<String> _safetyNumber = [
     '(514) 389-300',
     '(514) 935-1101',
-    '550 Sherbrooke O. Suite 550'
+    '550 Sherbrooke O. Suite 550',
+    '(514) 389-300',
   ];
   List<String> _safetyInfo = [
     'For on campus emergencies & dispatching resources (i.e. MSERT)',
     '24/7 listening service for any situation, crisis or not.',
-    'Trauma-informed resources for sexual violence survivors.'
+    'Trauma-informed resources for sexual violence survivors.',
+    'For on campus emergencies & dispatching resources (i.e. MSERT)',
   ];
-  List<Icon> _safetyIcon = [];
-  List<String> _buttonWord = ['Call Now', 'Call Now', 'Open Maps'];
+  List<AssetImage> _safetyImages = <AssetImage>[
+    AssetImage('assets/icons/shield.svg'),
+    AssetImage('assets/icons/ear.svg'),
+    AssetImage('assets/icons/butterfly.svg'),
+    AssetImage('assets/icons/shield.svg'),
+  ];
+  List<String> _buttonWord = ['Call Now', 'Call Now', 'Open Maps', 'Call Now'];
   List<Color> _safetyColor = [
     Colors.red,
     Colors.blue,
     Colors.green,
+    Colors.pink,
   ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(40.0),
@@ -48,28 +54,22 @@ class _SafetyState extends State<Safety> {
       ),
       child: Column(
         children: <Widget>[
-          Align(
+          Container(
             alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: EdgeInsets.only(left: 30.0, top: 60.0),
-              child: Text(
-                'Safety',
-                style: TextStyle(
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.deepPurple[800],
-                  fontFamily: 'Open Sans',
-                ),
+            margin: const EdgeInsets.only(top: 60.0, left: 30.0),
+            child: Text(
+              'Safety',
+              style: TextStyle(
+                fontSize: 25.0,
+                fontWeight: FontWeight.w600,
+                color: Colors.deepPurple[800],
+                fontFamily: 'Open Sans',
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 30.0,
-              right: 120.0,
-              top: 5.0,
-              bottom: 15,
-            ),
+          Container(
+            margin: const EdgeInsets.only(
+                top: 5.0, right: 120.0, bottom: 15.0, left: 30.0),
             child: Text(
               'Stay safe with the help of these services.',
               style: TextStyle(
@@ -84,13 +84,14 @@ class _SafetyState extends State<Safety> {
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
-              padding: const EdgeInsets.only(right: 23, left: 23, bottom: 23),
+              padding: const EdgeInsets.only(top: 10.0, bottom: 30.0),
               itemCount: _safetyTitle.length,
               itemBuilder: (BuildContext context, int index) {
                 return SafetyCard(
                     _safetyTitle[index],
                     _safetyNumber[index],
                     _safetyInfo[index],
+                    _safetyImages[index],
                     _buttonWord[index],
                     _safetyColor[index]);
               },

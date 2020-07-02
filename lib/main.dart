@@ -28,13 +28,13 @@ class MyAppState extends State<MyApp> {
       title: 'Event App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.deepPurple[600],
+        scaffoldBackgroundColor: Color(0xFF7851A9),
       ),
       home: Scaffold(
         body: _pageOptions[_selectedPage],
         bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.deepPurple[600],
+          backgroundColor: Color(0xFF7851A9),
           currentIndex: _selectedPage,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.grey,

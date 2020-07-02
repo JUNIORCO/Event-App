@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../widgets/notification_card.dart';
+import '../cards/notification_card.dart';
 import 'package:intl/intl.dart';
 
 class Notifications extends StatelessWidget {
-  final List<String> entries = <String>[
+  List<String> entries = <String>[
     'Buses leave in 1 hour. Location: John Molson Gym! Im going to make this text really really long and the next one really really short to see if the sizing is working. If its working ill be really happy. if not ill cry',
     'BEACH CLUB DAY! LETS GOOOOOOOOOOO This one will be slightly shorter but nonethless a few sentences long!!! Amazing',
     'Welcome Froshies! Have a wonderful time.',
@@ -15,7 +15,7 @@ class Notifications extends StatelessWidget {
     'LETS GO FOR A RIDE BABYYYYYY',
     'WOWWWWWWWWWWWW',
   ];
-  final List<AssetImage> images = <AssetImage>[
+  List<AssetImage> images = <AssetImage>[
     AssetImage('assets/images/frosh.jpg'),
     AssetImage('assets/images/uni_logo.png'),
     AssetImage('assets/images/frosh.jpg'),
@@ -27,7 +27,7 @@ class Notifications extends StatelessWidget {
     AssetImage('assets/images/uni_logo.png'),
     AssetImage('assets/images/frosh.jpg'),
   ];
-  final List<DateTime> dates = <DateTime>[
+  List<DateTime> dates = <DateTime>[
     DateTime.utc(2020, DateTime.july, 1, 11, 30),
     DateTime.utc(2020, DateTime.july, 1, 6, 21),
     DateTime.utc(2020, DateTime.june, 30, 14, 59),
@@ -54,12 +54,12 @@ class Notifications extends StatelessWidget {
     // else if the current and previous notification cards are identical, header is empty
     // else header is the date of the notification card
     String header = '';
-    double topPadding = 0.0;
+    double topMargin = 0.0;
     if (index == 0)
       header = 'Today';
     else if (formattedDate != formattedPrev) {
       header = formattedDate;
-      topPadding = 10.0;
+      topMargin = 10.0;
     }
 
     return Container(
@@ -70,7 +70,7 @@ class Notifications extends StatelessWidget {
             child: Container(
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(
-                  top: topPadding, right: 20.0, bottom: 10.0, left: 20.0),
+                  top: topMargin, right: 20.0, bottom: 10.0, left: 20.0),
               child: Text(
                 header,
                 textAlign: TextAlign.left,
@@ -91,13 +91,14 @@ class Notifications extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Colors.pink[300],
-            Colors.deepPurple[600],
+            Color(0xFFE893F9),
+            Color(0xFFAC4DDF),
+            Color(0xFF7851A9),
           ],
         ),
       ),
@@ -105,22 +106,22 @@ class Notifications extends StatelessWidget {
         children: <Widget>[
           Container(
             alignment: Alignment.centerLeft,
-            child: Text(
-              "Notifications",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
-            ),
-            margin: EdgeInsets.only(
+            margin: const EdgeInsets.only(
                 top: 60.0, right: 20.0, bottom: 10.0, left: 20.0),
+            child: const Text(
+              'Notifications',
+              style: TextStyle(
+                fontSize: 25.0,
+                fontWeight: FontWeight.w600,
+                color: Colors.white,
+              ),
+            ),
           ),
           Expanded(
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
-              padding: const EdgeInsets.all(8),
+              padding: const EdgeInsets.only(bottom: 30),
               itemCount: entries.length,
               itemBuilder: (BuildContext context, int index) =>
                   buildItem(index),
