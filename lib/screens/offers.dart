@@ -1,40 +1,42 @@
 import 'package:flutter/material.dart';
-import '../widgets/offers_card.dart';
+import '../cards/offers_card.dart';
 
-class Offers extends StatefulWidget {
-  @override
-  _OffersState createState() => _OffersState();
-}
-
-class _OffersState extends State<Offers> {
-  List<String> _offersName = ['STARBUCKS COFFEE', 'BURGER KING', 'MCDONALDS'];
-  List<String> _offersValidity = [
-    'Sept. 3, 2020',
-    'Sept. 6, 2020',
-    'Sept. 4, 2020'
+class Offers extends StatelessWidget {
+  List<String> _offersName = [
+    'Starbucks Coffee',
+    'BURGER KING',
+    'MCDONALDS',
+    'Starbucks Coffee'
+  ];
+  List<DateTime> _offersValidity = [
+    DateTime.utc(2020, DateTime.september, 3),
+    DateTime.utc(2020, DateTime.september, 6),
+    DateTime.utc(2020, DateTime.september, 4),
+    DateTime.utc(2020, DateTime.august, 31),
   ];
   List<AssetImage> _offersLogos = <AssetImage>[
     AssetImage('assets/images/starbucks_logo.png'),
     AssetImage('assets/images/burgerking_logo.png'),
     AssetImage('assets/images/mcdonalds_logo.png'),
+    AssetImage('assets/images/starbucks_logo.png'),
   ];
   List<String> _offersOffer = <String>[
     '20% off',
     '10\$ off',
     '''Buy 1
   Get 1 free ''',
+    '50% off',
   ];
   List<Color> _offersColor = <Color>[
     Colors.green,
     Colors.red,
     Colors.yellow[700],
+    Colors.green,
   ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(40.0),
@@ -52,29 +54,23 @@ class _OffersState extends State<Offers> {
       ),
       child: Column(
         children: <Widget>[
-          Align(
+          Container(
             alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: EdgeInsets.only(left: 30.0, top: 60.0),
-              child: Text(
-                'Offers',
-                style: TextStyle(
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.deepPurple[800],
-                  fontFamily: 'Open Sans',
-                ),
+            margin: const EdgeInsets.only(top: 60.0, left: 30.0),
+            child: Text(
+              'Offers',
+              style: TextStyle(
+                fontSize: 25.0,
+                fontWeight: FontWeight.w600,
+                color: Colors.deepPurple[800],
+                fontFamily: 'Open Sans',
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: 30.0,
-              right: 120.0,
-              top: 5.0,
-              bottom: 15,
-            ),
-            child: Text(
+          Container(
+            margin: const EdgeInsets.only(
+                top: 5.0, right: 120.0, bottom: 15.0, left: 30.0),
+            child: const Text(
               'Show your university ID to redeem these offers.',
               style: TextStyle(
                 fontSize: 16.0,
@@ -88,7 +84,7 @@ class _OffersState extends State<Offers> {
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.vertical,
-              padding: const EdgeInsets.only(right: 30, left: 30, bottom: 30),
+              padding: const EdgeInsets.only(top: 10.0, bottom: 30.0),
               itemCount: _offersName.length,
               itemBuilder: (BuildContext context, int index) {
                 return OffersCard(
