@@ -22,7 +22,7 @@ class SafetyCard extends StatelessWidget {
         color: Colors.grey[50],
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
+            color: Colors.grey.withOpacity(0.2),
             spreadRadius: 5,
             offset: Offset(0, 3),
             blurRadius: 7.0,
