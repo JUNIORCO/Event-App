@@ -8,6 +8,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  List<String> _time = [];
   List<String> _day = [
     'M\n\n26',
     'T\n\n27',
@@ -77,6 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   spreadRadius: 5,
                   offset: Offset(0, 3),
                   blurRadius: 7.0,
+                ),
+              ],
+            ),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[],
                 ),
               ],
             ),

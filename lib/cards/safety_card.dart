@@ -36,7 +36,7 @@ class SafetyCard extends StatelessWidget {
         children: <Widget>[
           Container(
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(top: 25.0, left: 25.0, bottom: 2.5),
+            padding: EdgeInsets.only(top: 18.0, left: 25.0, bottom: 2.5),
             child: Text(
               _title,
               textAlign: TextAlign.left,

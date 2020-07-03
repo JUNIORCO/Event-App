@@ -15,7 +15,7 @@ class NotificationCard extends StatelessWidget {
     return Opacity(
       opacity: _opacity,
       child: Container(
-        margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
         padding: const EdgeInsets.all(20.0),
         decoration: BoxDecoration(
           color: Colors.white,

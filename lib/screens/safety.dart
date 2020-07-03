@@ -98,7 +98,7 @@ class Safety extends StatelessWidget {
               separatorBuilder: (BuildContext context, int index) =>
                   const Divider(
                 color: Color(0x00000000), // transparent color
-                height: 0.0,
+                height: 15.0,
                 endIndent: 0.0,
                 indent: 0.0,
                 thickness: 0.0,
