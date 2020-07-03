@@ -5,7 +5,7 @@ class NotificationCard extends StatelessWidget {
   final String _text;
   AssetImage _image;
   final DateTime _date;
-  final DateFormat _formatter = new DateFormat('MMMMd');
+  final DateFormat _formatter = new DateFormat.jm();
   double _opacity;
 
   NotificationCard(this._text, this._image, this._date, this._opacity);
@@ -25,9 +25,22 @@ class NotificationCard extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(right: 20.0),
-              child: CircleAvatar(
-                backgroundImage: _image,
-                radius: 30,
+              child: Column(
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: _image,
+                    radius: 30,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 5.0),
+                    child: Text(
+                      _formatter.format(_date),
+                      style: TextStyle(
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(

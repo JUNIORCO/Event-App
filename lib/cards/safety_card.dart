@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SafetyCard extends StatelessWidget {
   final String _title;
   final String _number;
   final String _info;
-  final AssetImage _image;
+  final String _imageUrl;
   final String _word;
   final Color _color;
 
-  SafetyCard(this._title, this._number, this._info, this._image, this._word,
+  SafetyCard(this._title, this._number, this._info, this._imageUrl, this._word,
       this._color);
 
   @override
@@ -21,7 +22,7 @@ class SafetyCard extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomCenter,
-          stops: [0.12, 0.24],
+          stops: [0.13, 0.26],
           colors: [_color, Colors.white],
         ),
         boxShadow: [
@@ -32,79 +33,92 @@ class SafetyCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: Stack(
         children: <Widget>[
           Container(
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(top: 18.0, left: 25.0, bottom: 2.5),
-            child: Text(
-              _title,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 18.0,
-                fontWeight: FontWeight.w600,
-                color: Colors.black,
-                fontFamily: 'Open Sans',
-              ),
+            alignment: Alignment.centerRight,
+            margin: EdgeInsets.only(top: 10.0, right: 10.0, bottom: 0.0),
+            child: SvgPicture.asset(
+              _imageUrl,
+              height: 32.0,
+              color: Colors.white,
             ),
           ),
-          Container(
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(left: 25.0, bottom: 2.5),
-            child: Text(
-              _number,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w400,
-                color: Colors.black,
-                fontFamily: 'Open Sans',
-              ),
-            ),
-          ),
-          Container(
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.only(top: 2.5, left: 25.0, bottom: 2.5),
-            child: Text(
-              _info,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 14.0,
-                fontWeight: FontWeight.w200,
-                color: Colors.black,
-                fontFamily: 'Open Sans',
-              ),
-            ),
-          ),
-          Container(
-            alignment: Alignment.centerLeft,
-            child: Container(
-              padding: EdgeInsets.only(
-                  top: 10.0, right: 20.0, bottom: 10.0, left: 20.0),
-              margin: EdgeInsets.only(top: 10.0, left: 25.0, bottom: 20.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30.0),
-                color: _color,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.3),
-                    spreadRadius: 5,
-                    offset: Offset(0, 3),
-                    blurRadius: 7.0,
+          Column(
+            children: <Widget>[
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.only(top: 15.0, left: 25.0, bottom: 2.5),
+                child: Text(
+                  _title,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontFamily: 'Open Sans',
                   ),
-                ],
-              ),
-              child: Text(
-                _word,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w300,
-                  color: Colors.white,
-                  fontFamily: 'Open Sans',
                 ),
               ),
-            ),
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.only(left: 25.0, bottom: 2.5),
+                child: Text(
+                  _number,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black,
+                    fontFamily: 'Open Sans',
+                  ),
+                ),
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.only(top: 2.5, left: 25.0, bottom: 2.5),
+                child: Text(
+                  _info,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w200,
+                    color: Colors.black,
+                    fontFamily: 'Open Sans',
+                  ),
+                ),
+              ),
+              Container(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding: EdgeInsets.only(
+                      top: 10.0, right: 20.0, bottom: 10.0, left: 20.0),
+                  margin: EdgeInsets.only(top: 10.0, left: 25.0, bottom: 20.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30.0),
+                    color: _color,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 5,
+                        offset: Offset(0, 3),
+                        blurRadius: 7.0,
+                      ),
+                    ],
+                  ),
+                  child: Text(
+                    _word,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white,
+                      fontFamily: 'Open Sans',
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

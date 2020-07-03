@@ -20,11 +20,11 @@ class Safety extends StatelessWidget {
     'Trauma-informed resources for sexual violence survivors.',
     'For on campus emergencies & dispatching resources (i.e. MSERT)',
   ];
-  List<AssetImage> _safetyImages = <AssetImage>[
-    AssetImage('assets/icons/shield.svg'),
-    AssetImage('assets/icons/ear.svg'),
-    AssetImage('assets/icons/butterfly.svg'),
-    AssetImage('assets/icons/shield.svg'),
+  List<String> _safetyImages = [
+    'assets/icons/shield.svg',
+    'assets/icons/ear.svg',
+    'assets/icons/butterfly.svg',
+    'assets/icons/shield.svg',
   ];
   List<String> _buttonWord = ['Call Now', 'Call Now', 'Open Maps', 'Call Now'];
   List<Color> _safetyColor = [
