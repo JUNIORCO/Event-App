@@ -1,5 +1,6 @@
 import 'package:event_app/screens/notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -8,13 +9,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  List<String> _day = [
-    'M\n\n26',
-    'T\n\n27',
-    'W\n\n28',
-    'T\n\n29',
-    'F\n\n30',
+
+  List<DateTime> _dates = <DateTime>[
+    DateTime.utc(2020, DateTime.august, 29),
+    DateTime.utc(2020, DateTime.august, 30),
+    DateTime.utc(2020, DateTime.august, 31),
+    DateTime.utc(2020, DateTime.september, 1),
+    DateTime.utc(2020, DateTime.september, 2),
   ];
+
+  DateFormat _weekDayFormatter = DateFormat('E');
+  DateFormat _numDayFormatter = DateFormat('d');
 
   List<Color> _colors = <Color>[
     Color(0xFFFD6A6B),
@@ -30,30 +35,45 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   Widget _buildSchedule(int index) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedIndex = index;
-        });
-      },
-      child: Container(
-        height: 100,
-        width: 50,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(30.0),
-          color: _selectedIndex == index ? Colors.white : Colors.transparent,
-        ),
-        child: Padding(
-          padding: EdgeInsets.only(top: 15.0),
-          child: Text(
-            _day[index],
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 18.0,
-              fontWeight: FontWeight.w600,
-              color: _selectedIndex == index ? Colors.black : Colors.white,
-              fontFamily: 'Open Sans',
-            ),
+    return Container(
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
+        child: Container(
+          padding: EdgeInsets.all(15.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(30.0),
+            color: _selectedIndex == index ? Colors.white : Colors.transparent,
+          ),
+          child: Column(
+            children: <Widget>[
+              Text(
+                _weekDayFormatter.format(_dates[index]).substring(0, 1),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: _selectedIndex == index ? Colors.black : Colors.white,
+                  fontFamily: 'Open Sans',
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(15.0),
+              ),
+              Text(
+                _numDayFormatter.format(_dates[index]),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w600,
+                  color: _selectedIndex == index ? Colors.black : Colors.white,
+                  fontFamily: 'Open Sans',
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -62,87 +82,105 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height / 1.12,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(40.0),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.3),
-                  spreadRadius: 5,
-                  offset: Offset(0, 3),
-                  blurRadius: 7.0,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height / 4,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(40.0),
-                bottomRight: Radius.circular(40.0),
+    return Stack(
+      children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40.0),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 5,
+                offset: Offset(0, 3),
+                blurRadius: 7.0,
               ),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  _colors[_selectedIndex],
-                  _colors[_selectedIndex + 5],
+            ],
+          ),
+        ),
+        Column(
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40.0),
+                  bottomRight: Radius.circular(40.0),
+                ),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 5,
+                    offset: Offset(0, 3),
+                    blurRadius: 7.0,
+                  ),
                 ],
               ),
-              color: Colors.red,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.3),
-                  spreadRadius: 5,
-                  offset: Offset(0, 3),
-                  blurRadius: 7.0,
-                ),
-              ],
             ),
-            child: Column(
-              children: <Widget>[
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    margin: EdgeInsets.only(
-                      top: 40,
-                      left: 15,
-                    ),
-                    padding: EdgeInsets.all(15.0),
-                    child: Text(
-                      'Schedule',
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                        fontFamily: 'Open Sans',
+            Container(
+              // height: MediaQuery.of(context).size.height / 4,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40.0),
+                  bottomRight: Radius.circular(40.0),
+                ),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    _colors[_selectedIndex],
+                    _colors[_selectedIndex + 5],
+                  ],
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 5,
+                    offset: Offset(0, 3),
+                    blurRadius: 7.0,
+                  ),
+                ],
+              ),
+              child: Column(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        top: 40,
+                        left: 15,
+                      ),
+                      padding: EdgeInsets.all(15.0),
+                      child: Text(
+                        'Schedule',
+                        style: TextStyle(
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          fontFamily: 'Open Sans',
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: _day
-                      .asMap()
-                      .entries
-                      .map(
-                        (MapEntry map) => _buildSchedule(map.key),
-                      )
-                      .toList(),
-                ),
-              ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: _dates
+                        .asMap()
+                        .entries
+                        .map(
+                          (MapEntry map) => _buildSchedule(map.key),
+                        )
+                        .toList(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 15.0),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
+      ],
     );
   }
 }

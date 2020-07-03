@@ -43,6 +43,7 @@ class OffersCard extends StatelessWidget {
                 children: <Widget>[
                   CircleAvatar(
                     backgroundImage: _logo,
+                    backgroundColor: Color(0x00000000),
                     radius: 30,
                   ),
                   Padding(

@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 class Notifications extends StatelessWidget {
   List<String> entries = <String>[
-    'Buses leave in 1 hour. Location: John Molson Gym! Im going to make this text really really long and the next one really really short to see if the sizing is working. If its working ill be really happy. if not ill cry',
+    'Buses leave in 1 hour.\nLocation: John Molson Gym! Im going to make this text really really long and the next one really really short to see if the sizing is working. If its working ill be really happy. if not ill cry',
     'BEACH CLUB DAY! LETS GOOOOOOOOOOO This one will be slightly shorter but nonethless a few sentences long!!! Amazing',
     'Welcome Froshies! Have a wonderful time.',
     'LETS GO FOR A RIDE BABYYYYYY',
@@ -28,7 +28,7 @@ class Notifications extends StatelessWidget {
     AssetImage('assets/images/frosh.jpg'),
   ];
   List<DateTime> dates = <DateTime>[
-    DateTime.utc(2020, DateTime.july, 1, 11, 30),
+    DateTime.utc(2020, DateTime.july, 2, 11, 30),
     DateTime.utc(2020, DateTime.july, 1, 6, 21),
     DateTime.utc(2020, DateTime.june, 30, 14, 59),
     DateTime.utc(2020, DateTime.june, 30, 9, 0),
@@ -55,11 +55,13 @@ class Notifications extends StatelessWidget {
     // else header is the date of the notification card
     String header = '';
     double topMargin = 0.0;
-    if (index == 0)
+    if (index == 0 && formattedToday == formattedDate)
       header = 'Today';
+    else if (index == 0 && formattedToday != formattedDate)
+      header = formattedDate;
     else if (formattedDate != formattedPrev) {
       header = formattedDate;
-      topMargin = 10.0;
+      topMargin = 15.0;
     }
 
     return Container(
