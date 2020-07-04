@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:event_app/screens/home_screen.dart';
+import 'package:event_app/screens/home.dart';
 import 'package:event_app/screens/map.dart';
 import 'package:event_app/screens/notifications.dart';
 import 'package:event_app/screens/offers.dart';
