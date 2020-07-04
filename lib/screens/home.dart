@@ -1,6 +1,6 @@
-import 'package:event_app/screens/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../widgets/schedule_events.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -106,24 +106,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   bottomLeft: Radius.circular(40.0),
                   bottomRight: Radius.circular(40.0),
                 ),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.3),
-                    spreadRadius: 5,
-                    offset: Offset(0, 3),
-                    blurRadius: 7.0,
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              // height: MediaQuery.of(context).size.height / 4,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(40.0),
-                  bottomRight: Radius.circular(40.0),
-                ),
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -143,22 +125,20 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Column(
                 children: <Widget>[
-                  Align(
+                  Container(
                     alignment: Alignment.centerLeft,
-                    child: Container(
-                      margin: EdgeInsets.only(
-                        top: 40,
-                        left: 15,
-                      ),
-                      padding: EdgeInsets.all(15.0),
-                      child: Text(
-                        'Schedule',
-                        style: TextStyle(
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                          fontFamily: 'Open Sans',
-                        ),
+                    margin: EdgeInsets.only(
+                      top: 40,
+                      left: 15,
+                    ),
+                    padding: EdgeInsets.all(15.0),
+                    child: Text(
+                      'Schedule',
+                      style: TextStyle(
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontFamily: 'Open Sans',
                       ),
                     ),
                   ),
@@ -178,6 +158,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
+            Container(
+              margin: EdgeInsets.all(20.0),
+              padding: EdgeInsets.only(left: 10.0),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Day 1',
+                style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.w600,
+                  color: _colors[_selectedIndex + 5],
+                  fontFamily: 'Open Sans',
+                ),
+              ),
+            ),
+            //buildEvents(),
           ],
         ),
       ],

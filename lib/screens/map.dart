@@ -8,7 +8,7 @@ class Map extends StatelessWidget {
   Widget build(BuildContext context) {
     return new FlutterMap(
       options: new MapOptions(
-        center: new LatLng(51.5, -0.09),
+        center: new LatLng(45.496126, -73.565544),
         zoom: 13.0,
       ),
       layers: [
@@ -21,18 +21,16 @@ class Map extends StatelessWidget {
             'id': 'mapbox.streets',
           },
         ),
-        new MarkerLayerOptions(
-          markers: [
-            new Marker(
-              width: 80.0,
-              height: 80.0,
-              point: new LatLng(51.5, -0.09),
-              builder: (ctx) => new Container(
-                child: new FlutterLogo(),
-              ),
-            ),
-          ],
-        ),
+        // new MarkerLayerOptions(
+        //   markers: [
+        //     new Marker(
+        //       width: 30.0,
+        //       height: 30.0,
+        //       point: new LatLng(45.496126, -73.565544),
+        //       builder: (ctx) => new FlutterLogo(),
+        //     ),
+        //   ],
+        // ),
       ],
     );
   }
