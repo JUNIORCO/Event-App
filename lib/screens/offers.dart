@@ -33,11 +33,11 @@ class Offers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(40.0),
           bottomRight: Radius.circular(40.0),
         ),
-        color: Colors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.grey.withOpacity(0.3),
@@ -48,10 +48,10 @@ class Offers extends StatelessWidget {
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            alignment: Alignment.centerLeft,
-            margin: const EdgeInsets.only(top: 60.0, left: 30.0),
+          Padding(
+            padding: const EdgeInsets.only(top: 60.0, left: 30.0),
             child: Text(
               'Offers',
               style: TextStyle(
@@ -62,8 +62,8 @@ class Offers extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(
+          Padding(
+            padding: const EdgeInsets.only(
                 top: 5.0, right: 120.0, bottom: 15.0, left: 30.0),
             child: const Text(
               'Show your university ID to redeem these offers.',
@@ -83,11 +83,11 @@ class Offers extends StatelessWidget {
               itemCount: _offersName.length,
               itemBuilder: (BuildContext context, int index) {
                 return OffersCard(
-                    _offersName[index],
-                    _offersValidity[index],
-                    _offersLogos[index],
-                    _offersOffer[index],
-                    _offersColor[index]);
+                    companyName: _offersName[index],
+                    companyLogo: _offersLogos[index],
+                    validityDate: _offersValidity[index],
+                    offer: _offersOffer[index],
+                    color: _offersColor[index]);
               },
               separatorBuilder: (BuildContext context, int index) =>
                   const Divider(

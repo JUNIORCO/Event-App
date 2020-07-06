@@ -2,28 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SafetyCard extends StatelessWidget {
-  final String _title;
-  final String _number;
-  final String _info;
-  final String _imageUrl;
-  final String _word;
-  final Color _color;
+  final String title;
+  final String mainInfo;
+  final String description;
+  final String buttonText;
+  final Color color;
+  final SvgPicture icon;
 
-  SafetyCard(this._title, this._number, this._info, this._imageUrl, this._word,
-      this._color);
+  SafetyCard({
+    @required this.title,
+    @required this.mainInfo,
+    @required this.description,
+    @required this.buttonText,
+    @required this.color,
+    @required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 40.0, bottom: 20.0, left: 40.0),
+      margin: EdgeInsets.only(right: 40.0, left: 40.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30.0),
         color: Colors.grey[100],
+        borderRadius: BorderRadius.circular(30.0),
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomCenter,
           stops: [0.13, 0.26],
-          colors: [_color, Colors.white],
+          colors: [color, Colors.white],
         ),
         boxShadow: [
           BoxShadow(
@@ -37,20 +43,16 @@ class SafetyCard extends StatelessWidget {
         children: <Widget>[
           Container(
             alignment: Alignment.centerRight,
-            margin: EdgeInsets.only(top: 10.0, right: 10.0, bottom: 0.0),
-            child: SvgPicture.asset(
-              _imageUrl,
-              height: 32.0,
-              color: Colors.white,
-            ),
+            margin: EdgeInsets.only(top: 10.0, right: 10.0),
+            child: icon,
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Container(
-                alignment: Alignment.centerLeft,
+              Padding(
                 padding: EdgeInsets.only(top: 15.0, left: 25.0, bottom: 2.5),
                 child: Text(
-                  _title,
+                  title,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 18.0,
@@ -60,11 +62,10 @@ class SafetyCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                alignment: Alignment.centerLeft,
+              Padding(
                 padding: EdgeInsets.only(left: 25.0, bottom: 2.5),
                 child: Text(
-                  _number,
+                  mainInfo,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 16.0,
@@ -74,11 +75,10 @@ class SafetyCard extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                alignment: Alignment.centerLeft,
+              Padding(
                 padding: EdgeInsets.only(top: 2.5, left: 25.0, bottom: 2.5),
                 child: Text(
-                  _info,
+                  description,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontSize: 14.0,
@@ -89,32 +89,33 @@ class SafetyCard extends StatelessWidget {
                 ),
               ),
               Container(
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  padding: EdgeInsets.only(
-                      top: 10.0, right: 20.0, bottom: 10.0, left: 20.0),
-                  margin: EdgeInsets.only(top: 10.0, left: 25.0, bottom: 20.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30.0),
-                    color: _color,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        spreadRadius: 5,
-                        offset: Offset(0, 3),
-                        blurRadius: 7.0,
-                      ),
-                    ],
-                  ),
-                  child: Text(
-                    _word,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white,
-                      fontFamily: 'Open Sans',
+                padding: EdgeInsets.only(
+                  top: 10.0,
+                  right: 20.0,
+                  bottom: 10.0,
+                  left: 20.0,
+                ),
+                margin: EdgeInsets.only(top: 10.0, left: 25.0, bottom: 20.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.0),
+                  color: color,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.3),
+                      spreadRadius: 5,
+                      offset: Offset(0, 3),
+                      blurRadius: 7.0,
                     ),
+                  ],
+                ),
+                child: Text(
+                  buttonText,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w300,
+                    color: Colors.white,
+                    fontFamily: 'Open Sans',
                   ),
                 ),
               ),

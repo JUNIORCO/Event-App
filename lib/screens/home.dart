@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:math' as math;
 import '../widgets/schedule_events.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -58,6 +60,12 @@ class _HomeScreenState extends State<HomeScreen> {
     Color(0xFF0A9B1B),
     Color(0xFFFC7400),
   ];
+
+  SvgPicture backgroundIcon = SvgPicture.asset(
+    'assets/icons/calendar.svg',
+    height: 112.0,
+    color: Colors.white,
+  );
 
   Widget _buildSchedule(int index) {
     return Container(
@@ -125,7 +133,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         Column(
           children: <Widget>[
-            Container(
+            AnimatedContainer(
+              duration: Duration(milliseconds: 250),
+              curve: Curves.easeIn,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(40.0),
@@ -183,12 +193,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Container(
+            AnimatedContainer(
+              duration: Duration(milliseconds: 250),
+              curve: Curves.easeIn,
               margin: EdgeInsets.all(20.0),
               padding: EdgeInsets.only(left: 10.0),
               alignment: Alignment.centerLeft,
               child: Text(
-                'Day 1',
+                'Day ' + (_selectedIndex + 1).toString(),
                 style: TextStyle(
                   fontSize: 25.0,
                   fontWeight: FontWeight.w600,
@@ -224,6 +236,28 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ],
+        ),
+        Container(
+          alignment: Alignment.topRight,
+          padding: const EdgeInsets.only(top: 30.0, right: 10.0),
+          child: Transform.rotate(
+            angle: -math.pi / 5.0,
+            child: Opacity(
+              opacity: 0.2,
+              child: backgroundIcon,
+            ),
+          ),
+        ),
+        Container(
+          alignment: Alignment.topRight,
+          padding: const EdgeInsets.only(top: 30.0, right: 75.0),
+          child: Transform.rotate(
+            angle: -math.pi / 5.0,
+            child: Opacity(
+              opacity: 0.2,
+              child: backgroundIcon,
+            ),
+          ),
         ),
       ],
     );
