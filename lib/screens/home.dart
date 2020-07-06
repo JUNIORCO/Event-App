@@ -10,6 +10,31 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
+  List<String> _eventTime = <String>[
+    '11:00 am',
+    '4:00 p.m.',
+    '6:00 p.m.',
+    '8:00 p.m.',
+  ];
+  List<String> _eventLocation = <String>[
+    'Common Room',
+    'All Over The Map',
+    'Blues Pub',
+    'Cafe Campus',
+  ];
+  List<String> _eventName = <String>[
+    'Chess Tournament',
+    'Pub Crawl',
+    'Beer Die',
+    'Century Club',
+  ];
+  List<AssetImage> _eventIcon = <AssetImage>[
+    AssetImage('assets/images/chess_piece.png'),
+    AssetImage('assets/images/running_man.png'),
+    AssetImage('assets/images/beer_white.png'),
+    AssetImage('assets/images/disco_ball.png'),
+  ];
+
   List<DateTime> _dates = <DateTime>[
     DateTime.utc(2020, DateTime.august, 29),
     DateTime.utc(2020, DateTime.august, 30),
@@ -172,7 +197,32 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            //buildEvents(),
+            Expanded(
+              child: ListView.separated(
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
+                itemCount: _eventName.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return SchedEvent(
+                      _eventName[index],
+                      _eventTime[index],
+                      _eventIcon[index],
+                      _eventLocation[index],
+                      _colors[_selectedIndex],
+                      index,
+                      _eventName.length);
+                },
+                separatorBuilder: (BuildContext context, int index) =>
+                    const Divider(
+                  color: Color(0x00000000), // transparent color
+                  height: 35.0,
+                  endIndent: 0.0,
+                  indent: 0.0,
+                  thickness: 0.0,
+                ),
+              ),
+            ),
           ],
         ),
       ],

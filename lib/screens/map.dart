@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map/plugin_api.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:latlong/latlong.dart';
 
 class Map extends StatelessWidget {
@@ -21,16 +22,23 @@ class Map extends StatelessWidget {
             'id': 'mapbox.streets',
           },
         ),
-        // new MarkerLayerOptions(
-        //   markers: [
-        //     new Marker(
-        //       width: 30.0,
-        //       height: 30.0,
-        //       point: new LatLng(45.496126, -73.565544),
-        //       builder: (ctx) => new FlutterLogo(),
-        //     ),
-        //   ],
-        // ),
+        MarkerLayerOptions(
+          markers: [
+            Marker(
+              width: 80.0,
+              height: 80.0,
+              point: LatLng(45.496126, -73.565544),
+              builder: (ctx) => Container(
+                child: IconButton(
+                  icon: Icon(FontAwesomeIcons.mapMarkerAlt),
+                  color: Color(0xFF7851A9),
+                  iconSize: 40,
+                  onPressed: () {},
+                ),
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
