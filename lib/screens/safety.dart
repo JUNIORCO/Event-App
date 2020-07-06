@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../cards/safety_card.dart';
 
 class Safety extends StatelessWidget {
@@ -20,18 +21,39 @@ class Safety extends StatelessWidget {
     'Trauma-informed resources for sexual violence survivors.',
     'For on campus emergencies & dispatching resources (i.e. MSERT)',
   ];
-  List<String> _safetyImages = [
-    'assets/icons/shield.svg',
-    'assets/icons/ear.svg',
-    'assets/icons/butterfly.svg',
-    'assets/icons/shield.svg',
+  List<String> _buttonWord = [
+    'Call Now',
+    'Call Now',
+    'Open Maps',
+    'Call Now',
   ];
-  List<String> _buttonWord = ['Call Now', 'Call Now', 'Open Maps', 'Call Now'];
   List<Color> _safetyColor = [
     Colors.red,
     Colors.blue,
     Colors.green,
     Colors.pink,
+  ];
+  List<SvgPicture> _safetyImages = [
+    SvgPicture.asset(
+      'assets/icons/shield.svg',
+      height: 32.0,
+      color: Colors.white,
+    ),
+    SvgPicture.asset(
+      'assets/icons/ear.svg',
+      height: 32.0,
+      color: Colors.white,
+    ),
+    SvgPicture.asset(
+      'assets/icons/butterfly.svg',
+      height: 32.0,
+      color: Colors.white,
+    ),
+    SvgPicture.asset(
+      'assets/icons/shield.svg',
+      height: 32.0,
+      color: Colors.white,
+    ),
   ];
 
   @override
@@ -53,10 +75,10 @@ class Safety extends StatelessWidget {
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            alignment: Alignment.centerLeft,
-            margin: const EdgeInsets.only(top: 60.0, left: 30.0),
+          Padding(
+            padding: const EdgeInsets.only(top: 60.0, left: 30.0),
             child: Text(
               'Safety',
               style: TextStyle(
@@ -67,8 +89,8 @@ class Safety extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            margin: const EdgeInsets.only(
+          Padding(
+            padding: const EdgeInsets.only(
                 top: 5.0, right: 120.0, bottom: 15.0, left: 30.0),
             child: Text(
               'Stay safe with the help of these services.',
@@ -88,17 +110,18 @@ class Safety extends StatelessWidget {
               itemCount: _safetyTitle.length,
               itemBuilder: (BuildContext context, int index) {
                 return SafetyCard(
-                    _safetyTitle[index],
-                    _safetyNumber[index],
-                    _safetyInfo[index],
-                    _safetyImages[index],
-                    _buttonWord[index],
-                    _safetyColor[index]);
+                  title: _safetyTitle[index],
+                  mainInfo: _safetyNumber[index],
+                  description: _safetyInfo[index],
+                  buttonText: _buttonWord[index],
+                  color: _safetyColor[index],
+                  icon: _safetyImages[index],
+                );
               },
               separatorBuilder: (BuildContext context, int index) =>
                   const Divider(
                 color: Color(0x00000000), // transparent color
-                height: 15.0,
+                height: 30.0,
                 endIndent: 0.0,
                 indent: 0.0,
                 thickness: 0.0,

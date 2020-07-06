@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class NotificationCard extends StatelessWidget {
-  final String _text;
-  AssetImage _image;
-  final DateTime _date;
-  final DateFormat _formatter = new DateFormat.jm();
-  double _opacity;
+  final String text;
+  final AssetImage image;
+  final DateTime date;
+  final double opacity;
 
-  NotificationCard(this._text, this._image, this._date, this._opacity);
+  NotificationCard({
+    @required this.text,
+    @required this.image,
+    @required this.date,
+    @required this.opacity,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Opacity(
-      opacity: _opacity,
+      opacity: opacity,
       child: Container(
         margin: const EdgeInsets.only(left: 20.0, right: 20.0),
         padding: const EdgeInsets.all(20.0),
@@ -28,13 +32,13 @@ class NotificationCard extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundImage: _image,
+                    backgroundImage: image,
                     radius: 30,
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 5.0),
                     child: Text(
-                      _formatter.format(_date),
+                      DateFormat.jm().format(date),
                       style: TextStyle(
                         fontSize: 10,
                       ),
@@ -45,7 +49,7 @@ class NotificationCard extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                _text,
+                text,
                 textAlign: TextAlign.left,
               ),
             ),

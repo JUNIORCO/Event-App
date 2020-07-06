@@ -21,16 +21,6 @@ class Map extends StatelessWidget {
             'id': 'mapbox.streets',
           },
         ),
-        // new MarkerLayerOptions(
-        //   markers: [
-        //     new Marker(
-        //       width: 30.0,
-        //       height: 30.0,
-        //       point: new LatLng(45.496126, -73.565544),
-        //       builder: (ctx) => new FlutterLogo(),
-        //     ),
-        //   ],
-        // ),
       ],
     );
   }
