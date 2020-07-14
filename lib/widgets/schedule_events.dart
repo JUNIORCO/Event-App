@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:event_app/cards/event_info.dart';
+import 'package:event_app/widgets/event_info.dart';
 
 class SchedEvent extends StatelessWidget {
   final String _eventTime;

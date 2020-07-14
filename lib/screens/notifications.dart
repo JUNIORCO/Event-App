@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'dart:math' as math;
-import '../cards/notification_card.dart';
+import 'package:event_app/widgets/cards/notification_card.dart';
 
 class Notifications extends StatelessWidget {
   List<String> entries = <String>[

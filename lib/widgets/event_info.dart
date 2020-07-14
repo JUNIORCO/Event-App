@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:event_app/cards/event_info.dart';
 
 class EventInfo extends StatelessWidget {
   final String _eventName;

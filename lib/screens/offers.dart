@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../cards/offers_card.dart';
+import 'package:event_app/widgets/cards/offers_card.dart';
 
 class Offers extends StatelessWidget {
   List<String> _offersName = [

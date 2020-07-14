@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math' as math;
-import '../widgets/schedule_events.dart';
+import 'package:event_app/widgets/schedule_events.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatefulWidget {

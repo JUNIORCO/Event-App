@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../cards/safety_card.dart';
+import 'package:event_app/widgets/cards/safety_card.dart';
 
 class Safety extends StatelessWidget {
   List<String> _safetyTitle = [
