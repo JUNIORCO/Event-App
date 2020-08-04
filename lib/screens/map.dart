@@ -35,14 +35,17 @@ class Map extends StatelessWidget {
                   iconSize: 40,
                   onPressed: () {
                     showModalBottomSheet(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
                       context: context,
                       builder: (builder) {
                         return Container(
                           height: 350.0,
-                          color: Colors.white,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                            ),
+                          ),
                           child: Center(
                             child: Text("Bottom sheet"),
                           ),

@@ -29,6 +29,7 @@ class MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFF7851A9),
+        canvasColor: Colors.transparent,
       ),
       home: Scaffold(
         body: _pageOptions[_selectedPage],
