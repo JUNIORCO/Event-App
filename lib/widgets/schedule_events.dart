@@ -21,6 +21,7 @@ class SchedEvent extends StatelessWidget {
       this._currentColor,
       this._currentIndex,
       this._totalNumberofElements);
+
   @override
   Widget build(BuildContext context) {
     AssetImage _image = AssetImage('assets/images/chess_piece.png');
