@@ -45,21 +45,18 @@ class SchedEvent extends StatelessWidget {
               onPressed: () {
                 showModalBottomSheet(
                     isScrollControlled: true,
-                    shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(25.0)),
-                    ),
                     context: context,
                     builder: (BuildContext bc) {
                       return Wrap(children: <Widget>[
                         Container(
-                          color: Colors.white,
                           child: Container(
                             decoration: new BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: new BorderRadius.only(
-                                    topLeft: const Radius.circular(25.0),
-                                    topRight: const Radius.circular(25.0))),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
+                              ),
+                            ),
                             child: EventInfo(
                               'Chess Tournament',
                               'Common Room',
