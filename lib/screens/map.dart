@@ -33,6 +33,35 @@ class Map extends StatelessWidget {
                   icon: Icon(FontAwesomeIcons.mapMarkerAlt),
                   color: Color(0xFF7851A9),
                   iconSize: 40,
+                  onPressed: () {
+                    showModalBottomSheet(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      context: context,
+                      builder: (builder) {
+                        return Container(
+                          height: 350.0,
+                          color: Colors.white,
+                          child: Center(
+                            child: Text("Bottom sheet"),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+            ),
+            Marker(
+              width: 80.0,
+              height: 80.0,
+              point: LatLng(45.4946, -73.5774),
+              builder: (ctx) => Container(
+                child: IconButton(
+                  icon: Icon(FontAwesomeIcons.mapMarkerAlt),
+                  color: Color(0xFF7851A9),
+                  iconSize: 40,
                   onPressed: () {},
                 ),
               ),
