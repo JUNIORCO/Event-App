@@ -23,9 +23,9 @@ class EventInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * (2 / 3),
-      padding: EdgeInsets.all(10),
       margin: EdgeInsets.all(20),
-      color: Colors.white,
+      padding: EdgeInsets.only(top: 20),
+      color: Colors.transparent,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -38,16 +38,11 @@ class EventInfo extends StatelessWidget {
                   elevation: 6,
                   // color: Color.lerp(_currentColor, Color(0xFF7851A9),
                   //    (_currentIndex / _totalNumberofElements)),
-                  color: Colors.pink,
-                  child: Image(
-                    image: _eventIcon,
-                    alignment: Alignment.center,
-                    repeat: ImageRepeat.noRepeat,
-                    matchTextDirection: false,
-                    width: 50,
+                  child: CircleAvatar(
+                    backgroundImage: _eventIcon,
+                    radius: 30,
+                    backgroundColor: Colors.pink,
                   ),
-                  shape: CircleBorder(),
-                  visualDensity: VisualDensity(horizontal: 4.0, vertical: 4.0),
                 ),
               ),
               Column(

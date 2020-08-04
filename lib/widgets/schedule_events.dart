@@ -47,9 +47,9 @@ class SchedEvent extends StatelessWidget {
                 showModalBottomSheet(
                     isScrollControlled: true,
                     shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.vertical(top: Radius.circular(25.0)),
+                      borderRadius: BorderRadius.circular(30.0),
                     ),
+                    backgroundColor: Colors.transparent,
                     context: context,
                     builder: (BuildContext bc) {
                       return Wrap(children: <Widget>[
