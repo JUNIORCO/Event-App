@@ -34,24 +34,58 @@ class Map extends StatelessWidget {
                   color: Color(0xFF7851A9),
                   iconSize: 40,
                   onPressed: () {
-                    showModalBottomSheet(
+                    showDialog(
                       context: context,
-                      builder: (builder) {
-                        return Container(
-                          height: 350.0,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20),
+                      builder: (BuildContext cxt) {
+                        return Dialog(
+                          child: Container(
+                            child: Padding(
+                              padding: EdgeInsets.all(20),
+                              child: Text("Text Dialog"),
                             ),
-                          ),
-                          child: Center(
-                            child: Text("Bottom sheet"),
                           ),
                         );
                       },
                     );
+                    // showModalBottomSheet(
+                    //   context: context,
+                    //   builder: (builder) {
+                    //     return Container(
+                    //       height: 350.0,
+                    //       decoration: BoxDecoration(
+                    //         color: Colors.white,
+                    //         borderRadius: BorderRadius.only(
+                    //           topLeft: Radius.circular(20),
+                    //           topRight: Radius.circular(20),
+                    //         ),
+                    //       ),
+                    //       child: Center(
+                    //         child: Column(
+                    //           children: <Widget>[
+                    //             Text(
+                    //               "Hall Building Concordia",
+                    //               style: TextStyle(
+                    //                 fontSize: 14.0,
+                    //                 fontWeight: FontWeight.w600,
+                    //                 color: Colors.black,
+                    //                 fontFamily: 'Open Sans',
+                    //               ),
+                    //             ),
+                    //             Text(
+                    //               "1455 de Maisonneuve Boulevard West",
+                    //               style: TextStyle(
+                    //                 fontSize: 14.0,
+                    //                 fontWeight: FontWeight.w600,
+                    //                 color: Colors.black,
+                    //                 fontFamily: 'Open Sans',
+                    //               ),
+                    //             ),
+                    //           ],
+                    //         ),
+                    //       ),
+                    //     );
+                    //   },
+                    // );
                   },
                 ),
               ),
