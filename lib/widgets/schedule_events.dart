@@ -46,18 +46,11 @@ class SchedEvent extends StatelessWidget {
               onPressed: () {
                 showModalBottomSheet(
                     isScrollControlled: true,
-<<<<<<< HEAD
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    backgroundColor: Colors.transparent,
-=======
->>>>>>> 646be3e61193d407c883ac95d1330eb6b141fc5d
                     context: context,
                     builder: (BuildContext bc) {
-                      return Wrap(children: <Widget>[
-                        Container(
-                          child: Container(
+                      return Wrap(
+                        children: <Widget>[
+                          Container(
                             decoration: new BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
@@ -68,13 +61,13 @@ class SchedEvent extends StatelessWidget {
                             child: EventInfo(
                               'Chess Tournament',
                               'Common Room',
-                              '11:00a.m.-12:00',
+                              '11:00 AM — 12:00 PM',
                               _image,
                               'A Tournament of Beer Die is held over A Tournament of Beer Die is held over A Tournament of Beer Die is held over A Tournament of Beer Die is held over A Tournament of Beer Die is held over',
                             ),
                           ),
-                        )
-                      ]);
+                        ],
+                      );
                     });
               },
               elevation: 6,

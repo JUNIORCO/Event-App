@@ -40,7 +40,7 @@ class EventInfo extends StatelessWidget {
                   //    (_currentIndex / _totalNumberofElements)),
                   child: CircleAvatar(
                     backgroundImage: _eventIcon,
-                    radius: 30,
+                    radius: 40,
                     backgroundColor: Colors.pink,
                   ),
                 ),
@@ -82,7 +82,7 @@ class EventInfo extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 30),
           Text(
             'Description',
             textAlign: TextAlign.left,
@@ -93,7 +93,7 @@ class EventInfo extends StatelessWidget {
               fontFamily: 'Open Sans',
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
           Text(
             _eventDescription,
             textAlign: TextAlign.left,
@@ -104,7 +104,7 @@ class EventInfo extends StatelessWidget {
               fontFamily: 'Open Sans',
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 30),
           Text(
             'Location on Map',
             textAlign: TextAlign.left,
@@ -115,9 +115,9 @@ class EventInfo extends StatelessWidget {
               fontFamily: 'Open Sans',
             ),
           ),
-          Text(""" 
-          
-          """),
+          Image(
+            image: AssetImage('assets/images/map_image.png'),
+          )
           // Container(
           //   color: Colors.black,
           //   width: 10,
