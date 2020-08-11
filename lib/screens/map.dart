@@ -34,58 +34,27 @@ class Map extends StatelessWidget {
                   color: Color(0xFF7851A9),
                   iconSize: 40,
                   onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext cxt) {
-                        return Dialog(
-                          child: Container(
-                            child: Padding(
-                              padding: EdgeInsets.all(20),
-                              child: Text("Text Dialog"),
-                            ),
-                          ),
-                        );
-                      },
+                    final snackBar = SnackBar(
+                      backgroundColor: Colors.white,
+                      duration: const Duration(minutes: 5),
+                      behavior: SnackBarBehavior.floating,
+                      content: Text(
+                        'Hall Building Concordia\n1455 de Maisonneuve Boulevard West',
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                          fontFamily: 'Open Sans',
+                        ),
+                      ),
+                      action: SnackBarAction(
+                        label: 'Close',
+                        textColor: Color(0xFF7851A9),
+                        onPressed: () {},
+                      ),
                     );
-                    // showModalBottomSheet(
-                    //   context: context,
-                    //   builder: (builder) {
-                    //     return Container(
-                    //       height: 350.0,
-                    //       decoration: BoxDecoration(
-                    //         color: Colors.white,
-                    //         borderRadius: BorderRadius.only(
-                    //           topLeft: Radius.circular(20),
-                    //           topRight: Radius.circular(20),
-                    //         ),
-                    //       ),
-                    //       child: Center(
-                    //         child: Column(
-                    //           children: <Widget>[
-                    //             Text(
-                    //               "Hall Building Concordia",
-                    //               style: TextStyle(
-                    //                 fontSize: 14.0,
-                    //                 fontWeight: FontWeight.w600,
-                    //                 color: Colors.black,
-                    //                 fontFamily: 'Open Sans',
-                    //               ),
-                    //             ),
-                    //             Text(
-                    //               "1455 de Maisonneuve Boulevard West",
-                    //               style: TextStyle(
-                    //                 fontSize: 14.0,
-                    //                 fontWeight: FontWeight.w600,
-                    //                 color: Colors.black,
-                    //                 fontFamily: 'Open Sans',
-                    //               ),
-                    //             ),
-                    //           ],
-                    //         ),
-                    //       ),
-                    //     );
-                    //   },
-                    // );
+
+                    Scaffold.of(context).showSnackBar(snackBar);
                   },
                 ),
               ),
