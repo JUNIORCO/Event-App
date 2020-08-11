@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:event_app/widgets/event_info.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class SchedEvent extends StatelessWidget {
   final String _eventTime;
@@ -44,31 +45,21 @@ class SchedEvent extends StatelessWidget {
             padding: EdgeInsets.only(right: 10),
             child: MaterialButton(
               onPressed: () {
-                showModalBottomSheet(
-                    isScrollControlled: true,
-                    context: context,
-                    builder: (BuildContext bc) {
-                      return Wrap(
-                        children: <Widget>[
-                          Container(
-                            decoration: new BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20),
-                              ),
-                            ),
-                            child: EventInfo(
-                              'Chess Tournament',
-                              'Common Room',
-                              '11:00 AM — 12:00 PM',
-                              _image,
-                              'A Tournament of Beer Die is held over A Tournament of Beer Die is held over A Tournament of Beer Die is held over A Tournament of Beer Die is held over A Tournament of Beer Die is held over',
-                            ),
-                          ),
-                        ],
-                      );
-                    });
+                showBarModalBottomSheet(
+                  expand: false,
+                  enableDrag: true,
+                  isDismissible: true,
+                  context: context,
+                  backgroundColor: Colors.white,
+                  builder: (context, scrollController) => EventInfo(
+                    'Chess Tournament',
+                    'Common Room',
+                    '11:00 AM — 12:00 PM',
+                    _image,
+                    'A \ntournament \nof \nBeer \nDie \nis \nheld \nover \nA \ntournament \nof \nbeer \ndie',
+                    scrollController,
+                  ),
+                );
               },
               elevation: 6,
               color: Color.lerp(_currentColor, Color(0xFF7851A9),

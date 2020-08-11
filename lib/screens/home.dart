@@ -196,8 +196,8 @@ class _HomeScreenState extends State<HomeScreen> {
             AnimatedContainer(
               duration: Duration(milliseconds: 250),
               curve: Curves.easeIn,
-              margin: EdgeInsets.all(20.0),
-              padding: EdgeInsets.only(left: 10.0),
+              // margin: EdgeInsets.all(20.0),
+              padding: EdgeInsets.only(left: 30.0, top: 20.0),
               alignment: Alignment.centerLeft,
               child: Text(
                 'Day ' + (_selectedIndex + 1).toString(),
